@@ -1,5 +1,11 @@
 .PHONY: 
+
+install:
+	pip install -r requirements.txt
+
 utest:
-	PYTHONPATH=. pytest
+	PYTHONPATH=. pytest \
+		--disable-warnings \
+		--disable-pytest-warnings
 
 test: utest

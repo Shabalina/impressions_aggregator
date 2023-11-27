@@ -1,0 +1,7 @@
+columns:
+  IMPRESSION_ID:
+    nullable: false
+  CAMPAIGN_ID:
+    nullable: true
+  IMPRESSION_DATE:
+    nullable: false

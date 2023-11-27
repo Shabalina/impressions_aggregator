@@ -48,7 +48,7 @@ class S3Client():
         """
         res = self.client.list_objects_v2(Bucket=bucket, Prefix=prefix)
 
-        return [item["Key"] for item in res["Contents"] if item["Key"].endswith(".csv")] if "Contents" in res else []
+        return [item['Key'] for item in res['Contents'] if item['Key'].endswith('.csv')] if 'Contents' in res else []
     
     def export_s3_to_df(self, bucket: str, file_keys: List[str]) -> pd.DataFrame:
         """
@@ -87,6 +87,7 @@ class S3Client():
         """
 
         if df.empty:
+            print('No data to upload to s3')
             return
 
         buffer = BytesIO()
@@ -133,7 +134,7 @@ class S3Client():
 class S3PutObjectError(Exception):
     """Raised when put object failed"""
 
-    def __init__(self, bucket, file_key, message="Failed to put object"):
+    def __init__(self, bucket, file_key, message='Failed to put object'):
         self.bucket = bucket
         self.key = file_key
         self.message = message
@@ -144,7 +145,7 @@ class S3PutObjectError(Exception):
 class S3GetObjectError(Exception):
     """Raised when get object failed"""
 
-    def __init__(self, bucket, file_key, message="Failed to get object"):
+    def __init__(self, bucket, file_key, message='Failed to get object'):
         self.bucket = bucket
         self.key = file_key
         self.message = message
