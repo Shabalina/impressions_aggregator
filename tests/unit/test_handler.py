@@ -165,7 +165,7 @@ def test__map_transformation_aggregate_impressions(aggregate_impressions_fixture
         dummy_df, schema_path='schemas/impressions.yaml'
     )
 
-def test__map_transformation_other(other_transformation_fixture):
+def test__map_transformation_other(other_transformation_fixture, aggregate_impressions_fixture):
 
     """
     test__map_transformation_other 
@@ -179,4 +179,5 @@ def test__map_transformation_other(other_transformation_fixture):
 
     # Then
     other_transformation_fixture.assert_called_once()
+    aggregate_impressions_fixture.assert_not_called()
 

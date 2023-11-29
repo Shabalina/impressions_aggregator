@@ -27,12 +27,12 @@ The implementation assumes that the data fit in the memory because it loads the 
 1. create python virtual environment
 
 ```
-python -m .env
+python3 -m venv .venv 
 ```
 2. activate python environment
 
 ```
-source .env/bin/activate
+source .venv/bin/activate
 ```
 3. install python packages
 
@@ -44,9 +44,15 @@ make install
 
 The main file uses the argparse to parse the parameters and can print the documentation.
 
-usage: python main.py [-h] [--bucket_name BUCKET_NAME] [--date_partition YYYY-MM-DD] [--initials GF] [--transformation_type aggregate_impressions]
+usage: 
+
+```
+python main.py [-h] [--bucket_name BUCKET_NAME] [--date_partition YYYY-MM-DD] [--initials GF] [--transformation_type aggregate_impressions]
+
+```
 
 positional arguments:
+
     --bucket_name           Name of the s3 bucket where raw data files are stored
     --date_partition        The date in YYY-MM-DD format for which partition to look up data files
     --initials              The user initials to customise the name of s3 file with transformed data. 
@@ -55,11 +61,15 @@ positional arguments:
                             'aggregate_impressions' or 'other'
 
 optional arguments:
+
   -h, --help            show this help message and exit
 
 ## AWS S3 credentials #
 
-To process the data, the application should be able to connect to AWS S3 bucket, which is done via access_key_id and secret_access_key. The config file with keys is not included in the repo by default and needs to be recreated locally. To do that, create config.yaml file in the root of the project with the following structure:
+To process the data, the application should be able to connect to AWS S3 bucket, which is done via access_key_id and secret_access_key. The config file with keys is not included in the repo by default and needs to be recreated locally. 
+To do that, create `config.yaml` file in the root of the project with the following structure:
+
+```
 aws:
   access_key_id: [YOUR_ACCESS_KEY_HERE]
   secret_access_key: [YOUR_SECRET_ACCESS_KEY_HERE]
